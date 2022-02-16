@@ -1,0 +1,1101 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Laravel Generator APIs",
+        "version": "1.0.0"
+    },
+    "basePath": "/api/v1",
+    "paths": {
+        "Alert/wfgetActualAlerts": {
+            "get": {
+                "tags": [
+                    "Alerta"
+                ],
+                "summary": "Get the user ID of the actual alert request",
+                "description": "Request user ID for alert",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "body",
+                        "description": "Alert that should be stored",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "actual_alert": {
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "Alert/wfgetNotActualAlert": {
+            "get": {
+                "tags": [
+                    "Alerta"
+                ],
+                "summary": "Get the user ID of the no actual alert request",
+                "description": "Request user ID for no actual alert",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "body",
+                        "description": "Alert that should be stored",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Certificado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "noactual_alert": {
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "Alert/Location/{alert_id}": {
+            "get": {
+                "tags": [
+                    "Alerta"
+                ],
+                "summary": "Alert ID will be used to return",
+                "description": "The alert ID will be used to return the url, countryName, countryCode and timestamps",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "alert_id",
+                        "in": "body",
+                        "description": "Alert that should be stored",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "url": {
+                                    "type": "string"
+                                },
+                                "countryName": {
+                                    "type": "string"
+                                },
+                                "countryCode": {
+                                    "type": "string"
+                                },
+                                "timestamps": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/certificados": {
+            "get": {
+                "tags": [
+                    "Certificado"
+                ],
+                "summary": "Get a listing of the Certificates.",
+                "description": "Get all Certificates",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Certificado"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Certificado"
+                ],
+                "summary": "Store a newly created Certificate in storage",
+                "description": "Store Certificate",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Certificado that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Certificado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Certificado"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/certificados/{uuid}": {
+            "get": {
+                "tags": [
+                    "Certificado"
+                ],
+                "summary": "Display the specified Certificate",
+                "description": "Get Certificate",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid of certificate",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Certificado"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Certificado"
+                ],
+                "summary": "Update the specified Certificates in storage",
+                "description": "Update Certificate",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid of certificate",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Certificates that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Certificado"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Certificado"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Certificado"
+                ],
+                "summary": "Remove the specified Certificates from storage",
+                "description": "Delete Certificates",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid of certificate",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/disputas": {
+            "post": {
+                "tags": [
+                    "Disputa"
+                ],
+                "summary": "Generating copyright claims in case of disputes.",
+                "description": "Stores information given by a user to make a copyright infringement claim.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "body",
+                        "description": "Identification of the user who has the dispute",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "in_quiestion_web_archive",
+                        "in": "body",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "claim_for",
+                        "in": "body",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "jurisdiction",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "discovered",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "screenshot",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "remove-content",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "acknowledge",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "pay-for-use",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "amount",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "money-type",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "conditions_default",
+                        "in": "body",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "certificate_authorship",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "screenshot_draft",
+                        "in": "body",
+                        "description": "",
+                        "required": false,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "in_question",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "your_publication",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    },
+                    {
+                        "name": "your_web_archive",
+                        "in": "body",
+                        "description": "",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "dispute stored succesfully",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/disputas/{id}": {
+            "get": {
+                "tags": [
+                    "Disputa"
+                ],
+                "summary": "List disputes from user id.",
+                "description": "Get a list of dispute has the user done.",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "in": "body",
+                        "description": "Identification of the user who has the dispute",
+                        "required": true,
+                        "schema": {
+                            "$ref": ""
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "dispute": {
+                                    "description": "disputes from user",
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/documentos": {
+            "get": {
+                "tags": [
+                    "Documento"
+                ],
+                "summary": "Get a listing of the Documents.",
+                "description": "Get all Documents",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Documento"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Documento"
+                ],
+                "summary": "Store a newly created Document in storage",
+                "description": "Store Document",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Document that should be stored",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Documento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Documento"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/documentos/{uuid}": {
+            "get": {
+                "tags": [
+                    "Documento"
+                ],
+                "summary": "Display the specified Document",
+                "description": "Get Document",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid of Documento",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Documento"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "Documento"
+                ],
+                "summary": "Update the specified Document in storage",
+                "description": "Update Document",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "uuid of Document",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Document that should be updated",
+                        "required": false,
+                        "schema": {
+                            "$ref": "#/definitions/Documento"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "$ref": "#/definitions/Documento"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Documento"
+                ],
+                "summary": "Remove the specified Document from storage",
+                "description": "Delete Document",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "uuid of Document",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "string"
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/documentos-eliminados": {
+            "get": {
+                "tags": [
+                    "Documentos eliminados"
+                ],
+                "summary": "Get a listing of the deleted Documents.",
+                "description": "Get all deleted Documents",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Documento"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Documentos eliminados"
+                ],
+                "summary": "Force document deletion",
+                "description": "Get all deleted Documents",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Documento"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/documentos-restaurar": {
+            "delete": {
+                "tags": [
+                    "Documentos eliminados"
+                ],
+                "summary": "Restore Document",
+                "description": "Get all deleted Documents",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "properties": {
+                                "success": {
+                                    "type": "boolean"
+                                },
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/Documento"
+                                    }
+                                },
+                                "message": {
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "Alerta": {
+            "required": [
+                "title",
+                "content",
+                "url",
+                "user_id",
+                "actual"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "content": {
+                    "description": "content",
+                    "type": "string"
+                },
+                "url": {
+                    "description": "url",
+                    "type": "string"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "actual": {
+                    "description": "actual",
+                    "type": "boolean"
+                },
+                "documento_id": {
+                    "description": "documento_id",
+                    "type": "integer",
+                    "format": "int32"
+                }
+            }
+        },
+        "Certificado": {
+            "required": [
+                "user_id",
+                "version",
+                "autor",
+                "titulo",
+                "contenido",
+                "uuid",
+                "red",
+                "traza",
+                "ipfs",
+                "bloqueado"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "description": "version",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "autor": {
+                    "description": "autor",
+                    "type": "string"
+                },
+                "titulo": {
+                    "description": "titulo",
+                    "type": "string"
+                },
+                "contenido": {
+                    "description": "contenido",
+                    "type": "string"
+                },
+                "uuid": {
+                    "description": "uuid",
+                    "type": "string"
+                },
+                "red": {
+                    "description": "red",
+                    "type": "string"
+                },
+                "traza": {
+                    "description": "traza",
+                    "type": "string"
+                },
+                "ipfs": {
+                    "description": "ipfs",
+                    "type": "string"
+                },
+                "clave": {
+                    "description": "clave",
+                    "type": "string"
+                },
+                "bloqueado": {
+                    "description": "bloqueado",
+                    "type": "boolean"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Disputa": {
+            "required": [],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "claim_for": {
+                    "description": "claim_for",
+                    "type": "string"
+                },
+                "jurisdiction": {
+                    "description": "jurisdiction",
+                    "type": "string"
+                },
+                "discovered": {
+                    "description": "discovered",
+                    "type": "string"
+                },
+                "screenshot": {
+                    "description": "screenshot",
+                    "type": "string"
+                },
+                "remove-content": {
+                    "description": "remove-content",
+                    "type": "boolean"
+                },
+                "acknowledge": {
+                    "description": "acknowledge",
+                    "type": "boolean"
+                },
+                "pay-for-use": {
+                    "description": "pay-for-use",
+                    "type": "boolean"
+                },
+                "amount": {
+                    "description": "amount",
+                    "type": "string"
+                },
+                "money-type": {
+                    "description": "money-type",
+                    "type": "string"
+                },
+                "conditions-default": {
+                    "description": "conditions-default",
+                    "type": "boolean"
+                },
+                "certificate_authorship": {
+                    "description": "certificate_authorship",
+                    "type": "string"
+                },
+                "screenshot_draft": {
+                    "description": "screenshot_draft",
+                    "type": "string"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "deleted_at": {
+                    "description": "deleted_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        },
+        "Documento": {
+            "required": [
+                "user_id",
+                "version",
+                "titulo",
+                "contenido",
+                "uuid",
+                "protegido",
+                "bloqueado"
+            ],
+            "properties": {
+                "id": {
+                    "description": "id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "user_id": {
+                    "description": "user_id",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "version": {
+                    "description": "version",
+                    "type": "integer",
+                    "format": "int32"
+                },
+                "titulo": {
+                    "description": "titulo",
+                    "type": "string"
+                },
+                "contenido": {
+                    "description": "contenido",
+                    "type": "string"
+                },
+                "uuid": {
+                    "description": "uuid",
+                    "type": "string"
+                },
+                "protegido": {
+                    "description": "protegido",
+                    "type": "boolean"
+                },
+                "bloqueado": {
+                    "description": "bloqueado",
+                    "type": "boolean"
+                },
+                "created_at": {
+                    "description": "created_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "updated_at": {
+                    "description": "updated_at",
+                    "type": "string",
+                    "format": "date-time"
+                },
+                "deleted_at": {
+                    "description": "deleted_at",
+                    "type": "string",
+                    "format": "date-time"
+                }
+            }
+        }
+    }
+}
